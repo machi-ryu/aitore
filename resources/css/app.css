@@ -1,0 +1,12 @@
+
+.column-left {
+    height: 100vh;
+}
+
+.column-right {
+    height: 100vh;
+}
+
+.column-right.card {
+    height: 100%;
+}
