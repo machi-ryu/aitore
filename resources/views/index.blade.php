@@ -1,24 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>自主トレ一覧</h2>
+<div class="row">
+    <div class="col-md-3"><h2>自主トレ一覧</h2></div>
+    <div class="col-md-1">
+        <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="#">投稿</a>
+    </div>
+    <div class="col-md-1">
+        <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="#">予定</a>
+    </div>
+    <div class="col-md-1">
+        <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="#">検索</a>
+    </div>
+</div>
+
 
 
 @foreach($posts as $post)
-    <div class="row">
-        <div class="card col-md-6">
-            <div class="card-header">
-                <div>{{ $post->title }}</div>
-            </div>
-            <div class="card-body">
-                <div>{{ $post->start_datetime }}</div>
-                <div>{{ $post->end_datetime }}</div>
-                <div>{{ $post->address }}</div>
-                <a href="{{ route('show', ['id' => $post->id]) }}">詳細</a>
+    <div class="row mt-2">
+        <div class="card col-md-10 mx-auto">
+            <div class="card-body row">
+                <div class="col-md-3">
+                    <div>{{ $post->start_datetime }}</div>
+                    <div>{{ $post->end_datetime }}</div>
+                </div>
+                <div class="col-md-3">
+                    画像
+                </div>
+                <div class="col-md-5">
+                    <div>{{ $post->title }}</div>
+                    <div>{{ $post->address }}</div>
+                    <div>{{ $post->comment }}</div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center">
+                    <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('show', ['id' => $post->id]) }}">詳細</a>
+                </div>
             </div>
         </div>
     </div>
 @endforeach
+
+{{--
+<div id="app">
+    <example-component><example-component>
+</div>
+    --}}
 
 
 

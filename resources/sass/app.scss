@@ -8,14 +8,29 @@
 @import 'bootstrap/scss/bootstrap';
 
 
-.column-left {
-    height: 100vh;
+.row-top {
+    margin: 20px;
+    height: 60vh;
 }
 
-.column-right {
-    height: 100vh;
+.column-left, .column-right {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.column-right.card {
-    height: 100%;
+.column-right .card{
+    margin-top: 20px;
+}
+
+.menu, .place{
+    height: 20%;
+}
+
+.comment{
+    height: 30%;
+}
+
+img {
+    width: 500px;
+    height: 300px;
 }

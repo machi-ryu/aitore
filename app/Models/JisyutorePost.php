@@ -11,5 +11,5 @@ class JisyutorePost extends Model
 
     protected $table = 'jisyutore_posts';
 
-    protected $guraded = ['id'];
+    protected $guarded = ['id'];
 }
