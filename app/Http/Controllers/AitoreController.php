@@ -19,4 +19,14 @@ class AitoreController extends Controller
         $post = JisyutorePost::find($id);
         return view('show', compact('post'));
     }
+
+    public function create()
+    {
+        return view('create');
+    }
+
+    public function store(Request $request)
+    {
+
+    }
 }

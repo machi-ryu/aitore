@@ -5,7 +5,9 @@
  */
 
 import './bootstrap';
-import { createApp } from 'vue';
+// import { createApp, VueElement } from 'vue';
+// import { createApp } from 'vue';
+// import Test from './components/TestComponent.vue';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -13,10 +15,20 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+// const app = createApp();
+// console.log(app.version);
+// app.mount("#app");
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+
+// import ExampleComponent from './components/ExampleComponent.vue';
+// app.component('example-component', ExampleComponent);
+// app.mount("#app");
+
+// import TestComponent from './components/TestComponent.vue';
+// const app = createApp(App);
+// app.component('test-component', TestComponent);
+// app.mount("#app");
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +48,59 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+//  import { createApp } from 'vue/dist/vue.esm-bundler';
+ import { createApp } from 'vue';
+
+//  const Counter = {
+//      data() {
+//          return {
+//              counter: 0,
+//          };
+//      },
+//      mounted() {
+//          setInterval(() => {
+//              this.counter++;
+//          }, 1000);
+//      },
+//  };
+//  createApp(Counter).mount("#counter");
+
+// import App from './App.vue';
+// createApp(App).mount('#app');
+
+// import Preview from './components/Preview.vue';
+
+// 画像選択時にプレビュー表示
+const Preview = {
+    data() {
+        return {
+            message: "Try Preview!",
+            url:""
+        };
+    },
+    // mounted(){
+    //     console.log(this.$refs.preview)
+    // },
+    methods:{
+        show(){
+            const file = this.$refs.preview.files[0];
+            this.url = URL.createObjectURL(file);
+        }
+    }
+};
+createApp(Preview).mount('#preview');
+
+// 開始日時入れると終了日時が連動する(同じ日時が入る)
+const Datetime = {
+    data() {
+        return {
+            value:""
+        };
+    },
+    methods:{
+        inputDatetime(){
+            this.value = this.start
+        }
+    }
+};
+createApp(Datetime).mount('#datetime');

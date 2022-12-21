@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-3"><h2>自主トレ一覧</h2></div>
     <div class="col-md-1">
-        <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="#">投稿</a>
+        <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('create') }}">投稿</a>
     </div>
     <div class="col-md-1">
         <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="#">予定</a>

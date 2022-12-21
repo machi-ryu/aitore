@@ -1,0 +1,66 @@
+@extends('layouts.app')
+
+@section('content')
+<h2>自主トレ投稿</h2>
+
+<!-- <div id="preview">
+    @{{ message }}
+                <input type="file" name="file" ref="preview" @change="show">
+                <div class="preview-box" v-if="url">
+                    <img class="image-preview" v-bind:src="url">
+                </div>
+</div> -->
+
+<form action="{{ route('store') }}">
+    <div class="row row-top">
+        {{-- 左部分 --}}
+        <div class="column-left col-md-5">
+            <div id="datetime">
+                <label class="form-label" for="datetime">開始日時</label>
+                <input class="form-control" type="datetime-local" name="datetime" v-model="start" @change="inputDatetime">
+                <label class="form-label" for="datetime">終了日時</label>
+                <input class="form-control" type="datetime-local" name="datetime" v-bind:value="value">
+            </div>
+            <div id="preview">
+                <input class="form-control" type="file" name="file" ref="preview" @change="show">
+                <div class="preview-box" v-if="url">
+                    <img class="image-preview" v-bind:src="url">
+                </div>
+                <div class="preview-box" v-else>
+                    <img class="image-preview" src="{{ asset('/images/no_image.png') }}">
+                </div>
+            </div>
+        </div>
+
+        {{-- 右部分 --}}
+        <div class="column-right col-md-5">
+            <div class="menu">
+                <label class="form-label" for="date">メニュー</label>
+                <input class="form-control" type="text" name="menu">
+            </div>
+            <div class="place">
+                <label class="form-label" for="date">場所</label>
+                <input class="form-control" type="text" name="place">
+            </div>
+            <div class="comment">
+                <label class="form-label" for="date">コメント</label>
+                <input class="form-control" type="textarea" name="comment">
+            </div>
+        </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto page-bottom">
+        <button type="submit" class="btn btn-primary">投稿</button>
+    </div>
+</form>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+<!-- <script>
+let app = new Vue({
+  el: '#preview',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+</script> -->
+
+@endsection
