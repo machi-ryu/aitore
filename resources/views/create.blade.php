@@ -15,10 +15,11 @@
     <div class="row row-top">
         {{-- 左部分 --}}
         <div class="column-left col-md-5">
+            <label class="form-label">タイトル</label>
+            <input class="form-control" type="text" name="title">
             <div id="datetime">
-                <label class="form-label" for="datetime">開始日時</label>
+                <label class="form-label" for="datetime">日時</label>
                 <input class="form-control" type="datetime-local" name="datetime" v-model="start" @change="inputDatetime">
-                <label class="form-label" for="datetime">終了日時</label>
                 <input class="form-control" type="datetime-local" name="datetime" v-bind:value="value">
             </div>
             <div id="preview">
@@ -36,7 +37,12 @@
         <div class="column-right col-md-5">
             <div class="menu">
                 <label class="form-label" for="date">メニュー</label>
-                <input class="form-control" type="text" name="menu">
+                <!-- <input class="form-control" type="text" name="menu"> -->
+                <select class="form-control" name="menu">
+                    @foreach (Config::get('const.menu_category') as $key => $value)
+                        <option value="{{ $key }}">{{ $value }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="place">
                 <label class="form-label" for="date">場所</label>
@@ -44,7 +50,8 @@
             </div>
             <div class="comment">
                 <label class="form-label" for="date">コメント</label>
-                <input class="form-control" type="textarea" name="comment">
+                <!-- <input class="form-control" type="textarea" name="comment"> -->
+                <textarea class="form-control" name="comment"></textarea>
             </div>
         </div>
     </div>
