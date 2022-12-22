@@ -11,5 +11,16 @@ class JisyutorePost extends Model
 
     protected $table = 'jisyutore_posts';
 
-    protected $guarded = ['id'];
+    // protected $guarded = ['id'];
+    protected $fillable = [
+        'title',
+        'thumbnail',
+        'start_datetime',
+        'end_datetime',
+        'nearest_station',
+        'menu_category',
+        'address',
+        'comment',
+        'user_id',
+    ];
 }

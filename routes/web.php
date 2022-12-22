@@ -15,11 +15,11 @@ use App\Http\Controllers\AitoreController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     // return view('welcome');
+// });
 
-Route::get('/index', [AitoreController::class, 'index']);
+Route::get('/', [AitoreController::class, 'index'])->name('index');
 Route::get('/show/{id}', [AitoreController::class, 'show'])->name('show');
 Route::get('/create', [AitoreController::class, 'create'])->name('create');
 Route::post('/store', [AitoreController::class, 'store'])->name('store');

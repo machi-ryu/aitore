@@ -11,7 +11,8 @@
                 </div>
 </div> -->
 
-<form action="{{ route('store') }}">
+<form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
+    @csrf
     <div class="row row-top">
         {{-- 左部分 --}}
         <div class="column-left col-md-5">
@@ -19,11 +20,11 @@
             <input class="form-control" type="text" name="title">
             <div id="datetime">
                 <label class="form-label" for="datetime">日時</label>
-                <input class="form-control" type="datetime-local" name="datetime" v-model="start" @change="inputDatetime">
-                <input class="form-control" type="datetime-local" name="datetime" v-bind:value="value">
+                <input class="form-control" type="datetime-local" name="start_datetime" v-model="start" @change="inputDatetime">
+                <input class="form-control" type="datetime-local" name="end_datetime" v-bind:value="value">
             </div>
             <div id="preview">
-                <input class="form-control" type="file" name="file" ref="preview" @change="show">
+                <input class="form-control" type="file" name="thumbnail" ref="preview" @change="show">
                 <div class="preview-box" v-if="url">
                     <img class="image-preview" v-bind:src="url">
                 </div>
@@ -38,7 +39,7 @@
             <div class="menu">
                 <label class="form-label" for="date">メニュー</label>
                 <!-- <input class="form-control" type="text" name="menu"> -->
-                <select class="form-control" name="menu">
+                <select class="form-control" name="menu_category">
                     @foreach (Config::get('const.menu_category') as $key => $value)
                         <option value="{{ $key }}">{{ $value }}</option>
                     @endforeach
@@ -46,7 +47,7 @@
             </div>
             <div class="place">
                 <label class="form-label" for="date">場所</label>
-                <input class="form-control" type="text" name="place">
+                <input class="form-control" type="text" name="address">
             </div>
             <div class="comment">
                 <label class="form-label" for="date">コメント</label>

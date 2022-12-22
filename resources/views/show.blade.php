@@ -10,7 +10,13 @@
         <div>{{ $post->title }}</div>
         <div>{{ $post->start_datetime }}</div>
         <div>{{ $post->end_datetime }}</div>
-        <div><img src="{{ asset('/images/sample.jpg') }}"></div>
+        <!-- <div v-if="{{ $post->thumbnail }}">
+            <img src="{{ asset('storage/thumbnail/' . $post->thumbnail) }}">
+        </div>
+        <div v-else>
+            <img src="{{ asset('images/no_image.png') }}">
+        </div> -->
+        <div><img src="{{ asset('storage/thumbnail/' . $post->thumbnail) }}"></div>
     </div>
 
     {{-- 右部分 --}}
