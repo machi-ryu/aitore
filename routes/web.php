@@ -21,8 +21,13 @@ use App\Http\Controllers\AitoreController;
 
 Route::get('/', [AitoreController::class, 'index'])->name('index');
 Route::get('/show/{id}', [AitoreController::class, 'show'])->name('show');
-Route::get('/create', [AitoreController::class, 'create'])->name('create');
-Route::post('/store', [AitoreController::class, 'store'])->name('store');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/create', [AitoreController::class, 'create'])->name('create');
+    Route::post('/store', [AitoreController::class, 'store'])->name('store');
+    Route::get('/edit/{id}', [AitoreController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [AitoreController::class, 'update'])->name('update');
+});
 
 Auth::routes();
 

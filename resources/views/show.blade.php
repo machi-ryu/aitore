@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>自主トレ一詳細</h2>
+<div class="row">
+    <div class="col-md-3"><h2>自主トレ詳細</h2></div>
+    @auth
+        <div class="col-md-1">
+            <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('edit', ['id' => $post->id]) }}">編集</a>
+        </div>
+    @endauth
+
+</div>
 
 
 <div class="row row-top">
