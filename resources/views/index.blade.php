@@ -34,6 +34,7 @@
                 </div>
                 <div class="col-md-1 d-flex align-items-center">
                     <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('show', ['id' => $post->id]) }}">詳細</a>
+                    <a class="btn btn-outline-secondary h-100 d-flex align-items-center" href="{{ route('destroy', ['id' => $post->id]) }}">削除</a>
                 </div>
             </div>
         </div>

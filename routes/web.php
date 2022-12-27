@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/store', [AitoreController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [AitoreController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [AitoreController::class, 'update'])->name('update');
+    Route::get('/destroy/{id}', [AitoreController::class, 'destroy'])->name('destroy');
 });
 
 Auth::routes();

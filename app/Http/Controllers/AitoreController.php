@@ -91,4 +91,16 @@ class AitoreController extends Controller
     }
 
 
+    /**
+     * 自主練の投稿削除
+     * @param int $id
+     * @return void
+     */
+    public function destroy($id)
+    {
+        $post = JisyutorePost::find($id);
+        $post->delete();
+
+        return redirect(route('index'));
+    }
 }
