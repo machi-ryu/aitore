@@ -18,20 +18,8 @@
         <div class="column-left col-md-5">
             <label class="form-label">タイトル</label>
             <input class="form-control" type="text" name="title">
-            <div id="datetime">
-                <label class="form-label" for="datetime">日時</label>
-                <input class="form-control" type="datetime-local" name="start_datetime" v-model="start" @change="inputDatetime">
-                <input class="form-control" type="datetime-local" name="end_datetime" v-bind:value="value">
-            </div>
-            <div id="preview">
-                <input class="form-control" type="file" name="thumbnail" ref="preview" @change="show">
-                <div class="preview-box" v-if="url">
-                    <img class="image-preview" v-bind:src="url">
-                </div>
-                <div class="preview-box" v-else>
-                    <img class="image-preview" src="{{ asset('/images/no_image.png') }}">
-                </div>
-            </div>
+            <div id="datetime"></div>
+            <div id="preview"></div>
         </div>
 
         {{-- 右部分 --}}

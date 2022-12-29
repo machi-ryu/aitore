@@ -65,42 +65,10 @@ import './bootstrap';
 //  };
 //  createApp(Counter).mount("#counter");
 
-// import App from './App.vue';
-// createApp(App).mount('#app');
-
-// import Preview from './components/Preview.vue';
-
 // 画像選択時にプレビュー表示
-const Preview = {
-    data() {
-        return {
-            message: "Try Preview!",
-            url:""
-        };
-    },
-    // mounted(){
-    //     console.log(this.$refs.preview)
-    // },
-    methods:{
-        show(){
-            const file = this.$refs.preview.files[0];
-            this.url = URL.createObjectURL(file);
-        }
-    }
-};
+import Preview from './components/Preview.vue';
 createApp(Preview).mount('#preview');
 
 // 開始日時入れると終了日時が連動する(同じ日時が入る)
-const Datetime = {
-    data() {
-        return {
-            value:""
-        };
-    },
-    methods:{
-        inputDatetime(){
-            this.value = this.start
-        }
-    }
-};
+import Datetime from './components/Datetime.vue';
 createApp(Datetime).mount('#datetime');
