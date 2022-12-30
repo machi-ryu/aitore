@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\JisyutorePost;
+use App\Models\Join;
 
 class AitoreController extends Controller
 {
@@ -101,6 +102,27 @@ class AitoreController extends Controller
         $post = JisyutorePost::find($id);
         $post->delete();
 
+        return redirect(route('index'));
+    }
+
+
+    /**
+     * 参加の登録
+     */
+    public function joinStore(Request $request, $id)
+    {
+        $join = new Join;
+        // $data = $request->all();
+
+        $data = [
+            'jisyutore_post_id' => $id,
+            'user_id' => Auth::id(),
+            'join_level' => $request->input('join_level'),
+            'join_done_kubun' => '1',
+        ];
+        $join->fill($data)->save();
+
+        // 最後は予定ベー時(マイページ)一覧へ飛ばす。今はとりあえずindexへ。
         return redirect(route('index'));
     }
 }

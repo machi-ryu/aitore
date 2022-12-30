@@ -46,3 +46,44 @@ img.image-preview {
 #preview {
     margin-top: 10px;
 }
+
+/* モーダルウィンドウを開く要素 */
+.modal_open_btn {
+    display: inline-block;
+    cursor: pointer;
+    padding-top: 30px;
+  }
+  /* モーダルウィンドウ要素 */
+  .modal_contents {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index:100;
+    width: 100%;
+    height: 100%;
+    width: 100%;
+  }
+  /* モーダルウィンドウの背景要素 */
+  .modal_contents_bg {
+    background: rgba(0,0,0,.8);
+    width: 100%;
+    height: 100%;
+  }
+  /* モーダルウィンドウの中身*/
+  .modal_contents_wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #fff;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    transform: translate(-50%,-50%);
+    padding: 30px;
+  }
+  /* モーダルウィンドウを閉じる要素 */
+  .modal_close_btn {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 10px;
+  }

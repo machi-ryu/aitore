@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/edit/{id}', [AitoreController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [AitoreController::class, 'update'])->name('update');
     Route::get('/destroy/{id}', [AitoreController::class, 'destroy'])->name('destroy');
+
+    // join
+    Route::post('/join/store/{id}', [AitoreController::class, 'joinStore'])->name('join.store');
 });
 
 Auth::routes();

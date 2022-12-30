@@ -72,3 +72,25 @@ createApp(Preview).mount('#preview');
 // 開始日時入れると終了日時が連動する(同じ日時が入る)
 import Datetime from './components/Datetime.vue';
 createApp(Datetime).mount('#datetime');
+
+// モーダル
+// import Modal from './components/Modal.vue';
+const Modal = {
+    data() {
+      return {
+  //デフォルトはモーダルウィンドウを閉じる
+      show: false
+    }
+    },
+    methods:{
+  //モーダルウィンドウを開く要素をクリックしたら
+      open: function(){
+        this.show = true
+      },
+  //モーダルウィンドウを閉じる要素をクリックしたら
+      close: function(){
+        this.show = false
+      },
+    }
+}
+createApp(Modal).mount('#join_modal');

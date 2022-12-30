@@ -46,8 +46,38 @@
         </div>
     </div>
 </div>
+
+<!-- 参加ボタン -->
 <div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-primary">参加する</button>
+    <div id="join_modal">
+        <!--  クリック要素  -->
+        <!-- <span v-on:click="open" class="modal_open_btn">ここをクリック!!</span> -->
+        <button v-on:click="open" class="modal_open_btn btn btn-primary">参加する</button>
+
+        <!--  モーダルウィンドウ  -->
+        <div v-show="show" class="modal_contents">
+            <!-- モーダルウィンドウの背景 -->
+            <div v-on:click="close" class="modal_contents_bg"></div>
+            <!--   モーダルウィンドウの中身   -->
+            <div class="modal_contents_wrap">
+                <p>モーダルウィンドウ</p>
+                <form method="POST" action="{{ route('join.store', ['id' => $post->id]) }}">
+                    @csrf
+                    <input type="radio" class="btn-check" name="join_level" value="1" id="join_level1" checked>
+                    <label class="btn btn-outline-secondary form-control" for="join_level1">絶対いく</label>
+                    <input type="radio" class="btn-check" name="join_level" value="2" id="join_level2">
+                    <label class="btn btn-outline-secondary form-control" for="join_level2">たぶんいける</label>
+                    <input type="radio" class="btn-check" name="join_level" value="3" id="join_level3">
+                    <label class="btn btn-outline-secondary form-control" for="join_level3">きびしめだが、いきたい</label>
+
+                    <!--   モーダルウィンドウを閉じる   -->
+                    <button v-on:click="close" class="btn btn-outline-primary">キャンセル</button>
+
+                    <button type="submit" class="btn btn-primary">送信</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
