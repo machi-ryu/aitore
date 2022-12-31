@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     // join
     Route::post('/join/store/{id}', [AitoreController::class, 'joinStore'])->name('join.store');
+    Route::post('/join/cancel/{id}', [AitoreController::class, 'joinCancel'])->name('join.cancel');
 });
 
 Auth::routes();

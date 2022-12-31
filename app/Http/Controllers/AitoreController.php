@@ -21,7 +21,23 @@ class AitoreController extends Controller
     public function show($id)
     {
         $post = JisyutorePost::find($id);
-        return view('show', compact('post'));
+
+        $join = Join::where('jisyutore_post_id', $id)
+                    ->where('user_id', Auth::id())
+                    ->first();
+        // レコードある場合
+        if ($join) {
+            if ($join->join_done_kubun == '1') {
+                $is_join = true;
+            } else {
+                $is_join = false;
+            }
+        } else {
+            $is_join = false;
+        }
+
+        // return view('show', compact('post'));
+        return view('show', compact('post', 'is_join'));
     }
 
     public function create()
@@ -111,18 +127,31 @@ class AitoreController extends Controller
      */
     public function joinStore(Request $request, $id)
     {
-        $join = new Join;
-        // $data = $request->all();
-
-        $data = [
-            'jisyutore_post_id' => $id,
-            'user_id' => Auth::id(),
-            'join_level' => $request->input('join_level'),
-            'join_done_kubun' => '1',
-        ];
-        $join->fill($data)->save();
+        Join::updateOrCreate(
+            [
+                'jisyutore_post_id' => $id,
+                'user_id' => Auth::id(),
+            ],
+            [
+                'join_level' => $request->input('join_level'),
+                'join_done_kubun' => '1',
+            ],
+        );
 
         // 最後は予定ベー時(マイページ)一覧へ飛ばす。今はとりあえずindexへ。
+        return redirect(route('index'));
+    }
+
+
+    /**
+     * 参加キャンセル
+     */
+    public function joinCancel($id)
+    {
+        $join = Join::where('jisyutore_post_id', $id)
+                    ->where('user_id', Auth::id())
+                    ->update(['join_done_kubun' => '0']);
+
         return redirect(route('index'));
     }
 }

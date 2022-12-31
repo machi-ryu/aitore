@@ -73,7 +73,7 @@ createApp(Preview).mount('#preview');
 import Datetime from './components/Datetime.vue';
 createApp(Datetime).mount('#datetime');
 
-// モーダル
+// 参加モーダル
 // import Modal from './components/Modal.vue';
 const Modal = {
     data() {
@@ -94,3 +94,6 @@ const Modal = {
     }
 }
 createApp(Modal).mount('#join_modal');
+
+// 参加キャンセルモーダル
+createApp(Modal).mount('#join_cancel');

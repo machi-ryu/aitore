@@ -52,7 +52,7 @@
     <div id="join_modal">
         <!--  クリック要素  -->
         <!-- <span v-on:click="open" class="modal_open_btn">ここをクリック!!</span> -->
-        <button v-on:click="open" class="modal_open_btn btn btn-primary">参加する</button>
+        <button v-show="{{ !$is_join }}" v-on:click="open" class="modal_open_btn btn btn-primary">参加する</button>
 
         <!--  モーダルウィンドウ  -->
         <div v-show="show" class="modal_contents">
@@ -78,6 +78,28 @@
             </div>
         </div>
     </div>
+
+    <!-- 参加キャンセル(参加してる場合にキャンセルボタンが表示される) -->
+    <div id="join_cancel">
+        <button v-show="{{ $is_join }}" v-on:click="open" class="btn btn-secondary">参加キャンセル</button>
+
+        <!--  モーダルウィンドウ  -->
+        <div v-show="show" class="modal_contents">
+            <!-- モーダルウィンドウの背景 -->
+            <div v-on:click="close" class="modal_contents_bg"></div>
+            <!--   モーダルウィンドウの中身   -->
+            <div class="modal_contents_wrap">
+                <p>参加キャンセルしますか？</p>
+                <!--   モーダルウィンドウを閉じる   -->
+                <button v-on:click="close" class="btn btn-outline-primary">いいえ</button>
+                <form method="POST" action="{{ route('join.cancel', ['id' => $post->id]) }}">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">はい</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
