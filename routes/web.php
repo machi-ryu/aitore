@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AitoreController;
+use App\Http\Controllers\MyPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,10 @@ Route::group(['middleware' => 'auth'], function(){
     // join
     Route::post('/join/store/{id}', [AitoreController::class, 'joinStore'])->name('join.store');
     Route::post('/join/cancel/{id}', [AitoreController::class, 'joinCancel'])->name('join.cancel');
+});
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/mypage/index', [MyPageController::class, 'index'])->name('mypage.index');
 });
 
 Auth::routes();

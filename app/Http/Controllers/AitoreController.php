@@ -139,7 +139,7 @@ class AitoreController extends Controller
         );
 
         // 最後は予定ベー時(マイページ)一覧へ飛ばす。今はとりあえずindexへ。
-        return redirect(route('index'));
+        return redirect(route('mypage.index'));
     }
 
 
@@ -152,6 +152,6 @@ class AitoreController extends Controller
                     ->where('user_id', Auth::id())
                     ->update(['join_done_kubun' => '0']);
 
-        return redirect(route('index'));
+        return redirect(route('mypage.index'));
     }
 }
