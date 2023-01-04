@@ -17,20 +17,26 @@
 @foreach($posts as $post)
     <div class="row mt-2">
         <div class="card col-md-10 mx-auto">
-            <div class="card-body row">
-                <div class="col-md-3">
-                    <div>{{ $post->start_datetime }}</div>
-                    <div>{{ $post->end_datetime }}</div>
+            <div class="card-body row post-card">
+                <img class="col-md-2 index_image" src="{{ asset($post->thumbnail) }}">
+                <div class="col-md-6">
+                    <div class="datetime">{{ $post->start_datetime }}〜{{ $post->end_datetime }}</div>
+                    <div><h4>{{ $post->title }}</h4></div>
+                    <div class="menu_category">
+                        {{ Config::get('const.menu_category')[$post->menu_category] }}
+                         |
+                        {{ $post->address }}
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    画像
+                <div class="col-md-2">
+                    <!-- <div>{{ $post->comment }}</div> -->
+                    <div class="updated_at">
+                        <i class="bi bi-clock"></i>
+                        {{ $post->updated_at }}
+                    </div>
+                    <div>参加人数</div>
                 </div>
-                <div class="col-md-5">
-                    <div>{{ $post->title }}</div>
-                    <div>{{ $post->address }}</div>
-                    <div>{{ $post->comment }}</div>
-                </div>
-                <div class="col-md-1 d-flex align-items-center">
+                <div class="col-md-2 d-flex align-items-center">
                     <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('show', ['id' => $post->jisyutore_post_id]) }}">詳細</a>
                     <a class="btn btn-outline-secondary h-100 d-flex align-items-center" href="{{ route('destroy', ['id' => $post->jisyutore_post_id]) }}">削除</a>
                 </div>

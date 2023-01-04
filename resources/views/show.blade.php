@@ -24,7 +24,7 @@
         <div v-else>
             <img src="{{ asset('images/no_image.png') }}">
         </div> -->
-        <div><img src="{{ asset('storage/thumbnail/' . $post->thumbnail) }}"></div>
+        <div><img src="{{ asset($post->thumbnail) }}"></div>
     </div>
 
     {{-- 右部分 --}}

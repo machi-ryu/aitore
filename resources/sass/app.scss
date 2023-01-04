@@ -87,3 +87,62 @@ img.image-preview {
     cursor: pointer;
     margin-top: 10px;
   }
+
+// indeページ
+.post-card {
+    height: 150px;
+}
+.index_image {
+    height: 100%;
+    // width: 100%;
+    object-fit: contain;
+}
+.datetime, .menu_category {
+    color: gray;
+}
+.updated_at {
+    color: gray;
+    font-size: 0.8em;
+}
+
+// /* ラベル部分 右上に表示 */
+// .triangle-mypost::before {
+//     content: "";
+//     top: 0;
+//     right: 0;
+//     border-bottom: 4em solid transparent;
+//     // border-right: 4em solid #c12748; /* ラベルの色はここで変更 */
+//     border-right: 4em solid skyblue; /* ラベルの色はここで変更 */
+//     position: absolute;
+//     z-index: 100;
+// }
+// .triangle-mypost::after {
+//     content: "MY投稿";
+//     display: block;
+//     top: 5px;
+//     transform: rotate(45deg);
+//     color: #fff; /* 文字色はここで変更 */
+//     right: 0;
+//     position: absolute;
+//     z-index: 101;
+// }
+// .triangle-join::before {
+//     content: "";
+//     top: 0;
+//     right: 0;
+//     border-bottom: 4em solid transparent;
+//     // border-right: 4em solid #c12748; /* ラベルの色はここで変更 */
+//     border-right: 4em solid #3CB371; /* ラベルの色はここで変更 */
+//     position: absolute;
+//     z-index: 100;
+// }
+// .triangle-join::after {
+//     content: "参加予定";
+//     display: block;
+//     top: 5px;
+//     transform: rotate(45deg);
+//     color: #fff; /* 文字色はここで変更 */
+//     right: 0;
+//     position: absolute;
+//     z-index: 101;
+// }

@@ -7,13 +7,27 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\JisyutorePost;
 use App\Models\Join;
+use Illuminate\Database\Eloquent\Builder;
 
 class AitoreController extends Controller
 {
     public function index()
     {
-        $posts = JisyutorePost::all();
-        // $posts = JisyutorePost::orderBy('updated_at', 'desc')->get();
+        $posts = JisyutorePost::withCount([
+            'joins as level1_count' => function (Builder $query) {
+                $query->where('join_level', '1')->where('join_done_kubun', '1');
+            },
+            'joins as level2_count' => function (Builder $query) {
+                $query->where('join_level', '2')->where('join_done_kubun', '1');
+            },
+            'joins as level3_count' => function (Builder $query) {
+                $query->where('join_level', '3')->where('join_done_kubun', '1');
+            },
+            'joins as total_count' => function (Builder $query) {
+                $query->where('join_done_kubun', '1');
+            },
+            ])->get();
+
         return view('index', compact('posts'));
     }
 

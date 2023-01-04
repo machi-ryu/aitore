@@ -21,7 +21,7 @@
                     <img class="image-preview" v-bind:src="url">
                 </div>
                 <div class="preview-box" v-else>
-                    <img class="image-preview" src="{{ asset('/storage/thumbnail/' . $post->thumbnail) }}">
+                    <img class="image-preview" src="{{ asset($post->thumbnail) }}">
                 </div>
             </div>
         </div>
