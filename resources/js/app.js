@@ -6,7 +6,7 @@
 
 import './bootstrap';
 // import { createApp, VueElement } from 'vue';
-// import { createApp } from 'vue';
+import { createApp } from 'vue';
 // import Test from './components/TestComponent.vue';
 
 /**
@@ -15,14 +15,20 @@ import './bootstrap';
  * to use in your application's views. An example is included for you.
  */
 
-// const app = createApp();
+const app = createApp();
 // console.log(app.version);
 // app.mount("#app");
 
 
-// import ExampleComponent from './components/ExampleComponent.vue';
-// app.component('example-component', ExampleComponent);
-// app.mount("#app");
+import ExampleComponent from './components/ExampleComponent.vue';
+app.component('example-component', ExampleComponent);
+import DeleteModal from './components/DeleteModal.vue';
+app.component('delete-modal', DeleteModal);
+import JoinModal from './components/JoinModal.vue';
+app.component('join-modal', JoinModal);
+import JoinCancelModal from './components/JoinCancelModal.vue';
+app.component('join-cancel-modal', JoinCancelModal);
+app.mount("#app");
 
 // import TestComponent from './components/TestComponent.vue';
 // const app = createApp(App);
@@ -49,7 +55,7 @@ import './bootstrap';
  */
 
 //  import { createApp } from 'vue/dist/vue.esm-bundler';
- import { createApp } from 'vue';
+//  import { createApp } from 'vue';
 
 //  const Counter = {
 //      data() {
@@ -97,3 +103,9 @@ createApp(Modal).mount('#join_modal');
 
 // 参加キャンセルモーダル
 createApp(Modal).mount('#join_cancel');
+
+// 投稿削除キャンセルモーダル
+// createApp(Modal).mount('#cancel');
+// import DeleteModal from './components/DeleteModal.vue';
+// createApp(DeleteModal).component('delete-modal', DeleteModal);
+// createApp(DeleteModal).mount('#delete');

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AitoreController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\Auth\EditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,12 @@ Route::group(['middleware' => 'auth'], function(){
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/auth/edit', [EditController::class, 'edit'])->name('user.edit');
+    Route::post('/auth/update', [EditController::class, 'update'])->name('user.update');
+});
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/vue', function () {
 //     return view('vue');

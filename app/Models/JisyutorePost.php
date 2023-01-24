@@ -94,6 +94,15 @@ class JisyutorePost extends Model
 
 
     /**
+     * リレーション
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+    /**
      * 参加人数も結合してSELECT
      */
     public function selectWithCount()

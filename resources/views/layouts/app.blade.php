@@ -65,6 +65,8 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    <!-- ユーザー情報編集画面へ -->
+                                    <a class="dropdown-item" href="{{ route('user.edit') }}">ユーザー情報編集</a>
                                 </div>
                             </li>
                         @endguest

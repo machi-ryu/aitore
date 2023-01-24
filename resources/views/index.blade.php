@@ -28,25 +28,40 @@
                         {{ $post->address }}
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <!-- <div>{{ $post->comment }}</div> -->
-                    <div class="updated_at">
-                        <i class="bi bi-clock"></i>
-                        {{ $post->updated_at }}
-                    </div>
-                    <div>参加人数 {{ $post->total_count }}人</div>
+                <div class="col-md-4">
                     <div>
-                        (
-                        <i class="bi bi-emoji-laughing"></i>{{ $post->level1_count }}
-                        <i class="bi bi-emoji-smile"></i>{{ $post->level2_count }}
-                        <i class="bi bi-emoji-expressionless"></i>{{ $post->level3_count }}
-                        )
+                        <div class="right">
+                            <div class="user_icon">
+                                <img src="{{ asset($post->user->icon) }}">
+                            </div>
+                            <div class="user_name">{{ $post->user->name }}</div>
+                        </div>
+                        <div class="updated_at right">
+                            <i class="bi bi-clock"></i>
+                            {{ $post->updated_at }}
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-2 d-flex align-items-center">
-                    <!-- <div>ユーザー名、アイコン {{ $post->user_id }}</div> -->
-                    <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('show', ['id' => $post->id]) }}">詳細</a>
-                    <a class="btn btn-outline-secondary h-100 d-flex align-items-center" href="{{ route('destroy', ['id' => $post->id]) }}">削除</a>
+                    <div class="row clear">
+                        <div class="col-md-6">
+                            <!-- <div>{{ $post->comment }}</div> -->
+                            <div>参加人数 {{ $post->total_count }}人</div>
+                            <div>
+                                (
+                                <i class="bi bi-emoji-laughing"></i>{{ $post->level1_count }}
+                                <i class="bi bi-emoji-smile"></i>{{ $post->level2_count }}
+                                <i class="bi bi-emoji-expressionless"></i>{{ $post->level3_count }}
+                                )
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <!-- <div>ユーザー名、アイコン {{ $post->user_id }}</div> -->
+                            <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('show', ['id' => $post->id]) }}">詳細</a>
+                            <!-- <a class="btn btn-outline-secondary h-100 d-flex align-items-center" href="{{ route('destroy', ['id' => $post->id]) }}">削除</a> -->
+                            <delete-modal
+                            action="{{ route('destroy', ['id' => $post->id]) }}"
+                            ></delete-modal>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'icon',
         'email',
         'password',
     ];
@@ -41,4 +42,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * 画像取得時に登録ない場合はno_image.pngをセット
+     */
+    public function getIconAttribute($value)
+    {
+        if (empty($value)) {
+            $icon = 'images/no_image.png';
+        } else {
+            $icon = 'storage/user/' . $value;
+        }
+        return $icon;
+    }
 }

@@ -88,7 +88,7 @@ img.image-preview {
     margin-top: 10px;
   }
 
-// indeページ
+// indexページ
 .post-card {
     height: 150px;
 }
@@ -103,6 +103,39 @@ img.image-preview {
 .updated_at {
     color: gray;
     font-size: 0.8em;
+}
+.user_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.user_icon img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.user_name {
+    margin-top: -5px;
+}
+.right {
+    float: right;
+}
+.clear {
+    clear: both;
+}
+
+// ユーザー情報編集画面
+.preview_user_icon img {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 // /* ラベル部分 右上に表示 */
