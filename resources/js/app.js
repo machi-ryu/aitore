@@ -28,6 +28,12 @@ import JoinModal from './components/JoinModal.vue';
 app.component('join-modal', JoinModal);
 import JoinCancelModal from './components/JoinCancelModal.vue';
 app.component('join-cancel-modal', JoinCancelModal);
+import selectStation from './components/selectStation.vue';
+app.component('select-station', selectStation);
+import Preview from './components/Preview.vue';
+app.component('preview', Preview);
+import Datetime from './components/Datetime.vue';
+app.component('date-time', Datetime);
 app.mount("#app");
 
 // import TestComponent from './components/TestComponent.vue';
@@ -72,40 +78,39 @@ app.mount("#app");
 //  createApp(Counter).mount("#counter");
 
 // 画像選択時にプレビュー表示
-import Preview from './components/Preview.vue';
-createApp(Preview).mount('#preview');
+// import Preview from './components/Preview.vue';
+// createApp(Preview).mount('#preview');
 
 // 開始日時入れると終了日時が連動する(同じ日時が入る)
-import Datetime from './components/Datetime.vue';
-createApp(Datetime).mount('#datetime');
+// import Datetime from './components/Datetime.vue';
+// createApp(Datetime).mount('#datetime');
 
-// 参加モーダル
-// import Modal from './components/Modal.vue';
-const Modal = {
-    data() {
-      return {
-  //デフォルトはモーダルウィンドウを閉じる
-      show: false
-    }
-    },
-    methods:{
-  //モーダルウィンドウを開く要素をクリックしたら
-      open: function(){
-        this.show = true
-      },
-  //モーダルウィンドウを閉じる要素をクリックしたら
-      close: function(){
-        this.show = false
-      },
-    }
-}
-createApp(Modal).mount('#join_modal');
+// // 参加モーダル
+// // import Modal from './components/Modal.vue';
+// const Modal = {
+//     data() {
+//       return {
+//   //デフォルトはモーダルウィンドウを閉じる
+//       show: false
+//     }
+//     },
+//     methods:{
+//   //モーダルウィンドウを開く要素をクリックしたら
+//       open: function(){
+//         this.show = true
+//       },
+//   //モーダルウィンドウを閉じる要素をクリックしたら
+//       close: function(){
+//         this.show = false
+//       },
+//     }
+// }
+// createApp(Modal).mount('#join_modal');
 
-// 参加キャンセルモーダル
-createApp(Modal).mount('#join_cancel');
+// // 参加キャンセルモーダル
+// createApp(Modal).mount('#join_cancel');
 
 // 投稿削除キャンセルモーダル
 // createApp(Modal).mount('#cancel');
 // import DeleteModal from './components/DeleteModal.vue';
 // createApp(DeleteModal).component('delete-modal', DeleteModal);
-// createApp(DeleteModal).mount('#delete');

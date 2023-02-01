@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AitoreController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\Auth\EditController;
+use App\Http\Controllers\StationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,8 @@ Route::group(['middleware' => 'auth'], function(){
 // Route::get('/app', function () {
 //     return view('app');
 // });
+
+Route::get('/line', [StationController::class, 'line']);
+Route::get('/station', [StationController::class, 'station']);
+// Route::get('/linestation/{id}', [StationController::class, 'linestation']);
+Route::get('/station/{id}', [StationController::class, 'lineStation']);

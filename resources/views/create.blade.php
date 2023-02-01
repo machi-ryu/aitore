@@ -20,6 +20,10 @@
             <input class="form-control" type="text" name="title">
             <div id="datetime"></div>
             <div id="preview"></div>
+            <date-time></date-time>
+            <preview
+                image_path="{{ asset('/images/no_image.png') }}"
+            ></preview>
         </div>
 
         {{-- 右部分 --}}
@@ -34,8 +38,10 @@
                 </select>
             </div>
             <div class="place">
-                <label class="form-label" for="date">場所</label>
-                <input class="form-control" type="text" name="address">
+                <select-station
+                    selected_line="0"
+                    selected_station="0"
+                ></select-staion>
             </div>
             <div class="comment">
                 <label class="form-label" for="date">コメント</label>

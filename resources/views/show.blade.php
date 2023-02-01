@@ -31,12 +31,12 @@
     <div class="column-right col-md-5">
         <div class="card menu">
             <div class="body">
-                {{ $post->menu_category }}
+                {{ Config::get('const.menu_category')[$post->menu_category] }}
             </div>
         </div>
         <div class="card place">
             <div class="body">
-                {{ $post->address }}
+                {{ $post->station->station_name }}
             </div>
         </div>
         <div class="card comment">

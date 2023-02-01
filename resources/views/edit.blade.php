@@ -10,20 +10,18 @@
         <div class="column-left col-md-5">
             <label class="form-label">タイトル</label>
             <input class="form-control" type="text" name="title" value="{{ $post->title }}">
-            <div id="datetime">
+            <!-- <div id="datetime">
                 <label class="form-label" for="datetime">日時</label>
                 <input class="form-control" type="datetime-local" name="start_datetime" v-model="start" @change="inputDatetime">
                 <input class="form-control" type="datetime-local" name="end_datetime" v-bind:value="value">
-            </div>
-            <div id="preview">
-                <input class="form-control" type="file" name="thumbnail" ref="preview" @change="show">
-                <div class="preview-box" v-if="url">
-                    <img class="image-preview" v-bind:src="url">
-                </div>
-                <div class="preview-box" v-else>
-                    <img class="image-preview" src="{{ asset($post->thumbnail) }}">
-                </div>
-            </div>
+            </div> -->
+            <date-time
+                start="{{ $post->start_datetime }}"
+                end="{{ $post->end_datetime }}"
+            ></date-time>
+            <preview
+                image_path="{{ asset($post->thumbnail) }}"
+            ></preview>
         </div>
 
         {{-- 右部分 --}}
@@ -42,6 +40,11 @@
                 </select>
             </div>
             <div class="place">
+                <select-station
+                    selected_line="{{ $post->station->line_id }}"
+                    selected_station="{{ $post->station_id }}"
+                ></select-staion>
+
                 <label class="form-label" for="date">場所</label>
                 <input class="form-control" type="text" name="address" value="{{ $post->address }}">
             </div>

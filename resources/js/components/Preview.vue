@@ -5,16 +5,17 @@
         <img class="image-preview" v-bind:src="url">
     </div>
     <div class="preview-box" v-else>
-        <img class="image-preview" src="/images/no_image.png">
+        <img class="image-preview" :src="image_path">
     </div>
 </div>
 </template>
 
 <script>
     export default {
+        name: 'Preview',
+        props: ['image_path'],
         data() {
             return {
-                message: "Try Preview!",
                 url:""
             };
         },

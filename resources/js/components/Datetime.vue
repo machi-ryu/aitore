@@ -1,21 +1,35 @@
 <template>
     <div>
         <label class="form-label" for="datetime">日時</label>
-        <input class="form-control" type="datetime-local" name="start_datetime" v-model="start" @change="inputDatetime">
-        <input class="form-control" type="datetime-local" name="end_datetime" v-bind:value="value">
+        <input
+            class="form-control"
+            type="datetime-local"
+            name="start_datetime"
+            step="900"
+            v-model="start"
+            @change="inputDatetime">
+        <input
+            class="form-control"
+            type="datetime-local"
+            name="end_datetime"
+            v-model="end">
     </div>
 </template>
 
 <script>
     export default {
+        name: 'Datetime',
+        props: ['start', 'end'],
         data() {
             return {
-                value:""
+                // start:""
+                // value:"",
+                end: this.end,
             };
         },
         methods:{
             inputDatetime(){
-                this.value = this.start
+                this.end = this.start
             }
         }
     }

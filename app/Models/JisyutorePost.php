@@ -19,7 +19,7 @@ class JisyutorePost extends Model
         'thumbnail',
         'start_datetime',
         'end_datetime',
-        'nearest_station',
+        'station_id',
         'menu_category',
         'address',
         'comment',
@@ -41,23 +41,23 @@ class JisyutorePost extends Model
     /**
      * 開始日時を加工
      */
-    public function getStartDatetimeAttribute($value)
-    {
-        $day = date('w', strtotime($value));
-        $week = ['日', '月', '火', '水', '木', '金', '土'];
-        $start_datetime = date('Y/m/d (' . $week[$day] . ') H:i', strtotime($value));
-        return $start_datetime;
-    }
+    // public function getStartDatetimeAttribute($value)
+    // {
+    //     $day = date('w', strtotime($value));
+    //     $week = ['日', '月', '火', '水', '木', '金', '土'];
+    //     $start_datetime = date('Y/m/d (' . $week[$day] . ') H:i', strtotime($value));
+    //     return $start_datetime;
+    // }
 
 
     /**
      * 終了日時を加工
      */
-    public function getEndDatetimeAttribute($value)
-    {
-        $end_datetime = date('H:i', strtotime($value));
-        return $end_datetime;
-    }
+    // public function getEndDatetimeAttribute($value)
+    // {
+    //     $end_datetime = date('H:i', strtotime($value));
+    //     return $end_datetime;
+    // }
 
 
     /**
@@ -99,6 +99,15 @@ class JisyutorePost extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    /**
+     * リレーション
+     */
+    public function station()
+    {
+        return $this->belongsTo(Station::class);
     }
 
 

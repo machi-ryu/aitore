@@ -25,7 +25,7 @@
                     <div class="menu_category">
                         {{ Config::get('const.menu_category')[$post->menu_category] }}
                          |
-                        {{ $post->address }}
+                        {{ $post->station->station_name }}
                     </div>
                 </div>
                 <div class="col-md-4">

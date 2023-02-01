@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\JisyutorePost;
 use App\Models\Join;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\Line;
+use App\Models\Station;
 
 class AitoreController extends Controller
 {
@@ -56,7 +57,12 @@ class AitoreController extends Controller
 
     public function create()
     {
-        return view('create');
+        $lines = Line::all();
+        // $lines = Line::get()->toArray();
+        // $lines = Line::get()->toJson();
+        $stations = Station::all();
+
+        return view('create', compact('lines', 'stations'));
     }
 
 
