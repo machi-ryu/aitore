@@ -15,33 +15,47 @@
 <div class="row row-top">
     {{-- 左部分 --}}
     <div class="column-left col-md-5">
-        <div>{{ $post->title }}</div>
-        <div>{{ $post->start_datetime }}</div>
-        <div>{{ $post->end_datetime }}</div>
-        <!-- <div v-if="{{ $post->thumbnail }}">
-            <img src="{{ asset('storage/thumbnail/' . $post->thumbnail) }}">
+        <div class="h3">{{ $post->title }}</div>
+        <div class="date-time">
+            <div class="border-bottom w-25">時間</div>
+            <div class="m-2">
+                {{ $start_datetime }}
+                 〜
+                {{ $end_datetime }}
+            </div>
         </div>
-        <div v-else>
-            <img src="{{ asset('images/no_image.png') }}">
-        </div> -->
-        <div><img src="{{ asset($post->thumbnail) }}"></div>
+        <div class="menu">
+            <div class="border-bottom w-25">メニュー</div>
+            <div class="m-2">
+                {{ Config::get('const.menu_category')[$post->menu_category] }}
+            </div>
+        </div>
+        <div class="thumbnail">
+            <div class="m-2">
+                <img src="{{ asset($post->thumbnail) }}">
+            </div>
+        </div>
     </div>
 
     {{-- 右部分 --}}
     <div class="column-right col-md-5">
-        <div class="card menu">
-            <div class="body">
-                {{ Config::get('const.menu_category')[$post->menu_category] }}
-            </div>
-        </div>
-        <div class="card place">
-            <div class="body">
-                {{ $post->station->station_name }}
-            </div>
-        </div>
-        <div class="card comment">
-            <div class="body">
+        <div class="comment">
+            <div class="border-bottom w-25">詳細</div>
+            <div class="m-2">
                 {{ $post->comment }}
+            </div>
+        </div>
+        <div class="station">
+            <div class="border-bottom w-25">最寄駅</div>
+            <div class="m-2">
+                <div>{{ $post->station->line->line_name }}</div>
+                <div>{{ $post->station->station_name }}</div>
+            </div>
+        </div>
+        <div class="address">
+            <div class="border-bottom w-25">地図</div>
+            <div class="map m-2">
+                地図
             </div>
         </div>
     </div>

@@ -157,4 +157,24 @@ class JisyutorePost extends Model
 
         return $posts;
     }
+
+
+    /**
+     * 日付フォーマット変換 start_datetime
+     */
+    public function startTimeFormat($datetime)
+    {
+        $datetime_format = date('Y/m/d H:i', strtotime($datetime));
+        return $datetime_format;
+    }
+
+
+    /**
+     * 日付フォーマット変換 end_datetime
+     */
+    public function endTimeFormat($datetime)
+    {
+        $datetime_format = date('H:i', strtotime($datetime));
+        return $datetime_format;
+    }
 }

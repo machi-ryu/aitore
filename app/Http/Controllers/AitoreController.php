@@ -40,6 +40,10 @@ class AitoreController extends Controller
         $join = Join::where('jisyutore_post_id', $id)
                     ->where('user_id', Auth::id())
                     ->first();
+
+        $start_datetime = $post->startTimeFormat($post->start_datetime);
+        $end_datetime = $post->endTimeFormat($post->end_datetime);
+
         // レコードある場合
         if ($join) {
             if ($join->join_done_kubun == '1') {
@@ -52,7 +56,7 @@ class AitoreController extends Controller
         }
 
         // return view('show', compact('post'));
-        return view('show', compact('post', 'is_join'));
+        return view('show', compact('post', 'is_join', 'start_datetime', 'end_datetime'));
     }
 
     public function create()
