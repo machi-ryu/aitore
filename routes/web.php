@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/mypage/index', [MyPageController::class, 'index'])->name('mypage.index');
+    Route::get('/mypage/calendar', [MyPageController::class, 'getEvents'])->name('mypage.calendar');
 });
 
 Auth::routes();

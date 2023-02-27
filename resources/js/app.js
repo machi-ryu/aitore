@@ -7,7 +7,13 @@
 import './bootstrap';
 // import { createApp, VueElement } from 'vue';
 import { createApp } from 'vue';
+import { createVuetify } from 'vuetify';
+// import { createVCalendar } from 'v-calendar';
+import VCalendar from 'v-calendar';
+import 'v-calendar/dist/style.css';
 // import Test from './components/TestComponent.vue';
+// import jQuery from 'jquery';
+// window.$ = jQuery;
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -16,6 +22,11 @@ import { createApp } from 'vue';
  */
 
 const app = createApp();
+const vuetify = createVuetify();
+// const vcalendar = createVCalendar();
+app.use(vuetify)
+// app.use(vcalendar)
+app.use(VCalendar, {})
 // console.log(app.version);
 // app.mount("#app");
 
@@ -34,6 +45,13 @@ import Preview from './components/Preview.vue';
 app.component('preview', Preview);
 import Datetime from './components/Datetime.vue';
 app.component('date-time', Datetime);
+// import CalendarApp from './components/CalendarApp.vue';
+import CalendarApp from './components/CalendarApp3.vue';
+app.component('calendar-app', CalendarApp);
+// app.config.compilerOptions.isCustomElement = tag => tag === 'v-calendar'
+// app.config.compilerOptions.isCustomElement = (tag) => {
+//   return tag.startsWith('v-calendar')
+// }
 app.mount("#app");
 
 // import TestComponent from './components/TestComponent.vue';
@@ -63,7 +81,7 @@ app.mount("#app");
 //  import { createApp } from 'vue/dist/vue.esm-bundler';
 //  import { createApp } from 'vue';
 
-//  const Counter = {
+//  const counter = createApp({
 //      data() {
 //          return {
 //              counter: 0,
@@ -74,8 +92,8 @@ app.mount("#app");
 //              this.counter++;
 //          }, 1000);
 //      },
-//  };
-//  createApp(Counter).mount("#counter");
+//  });
+//  counter.mount("#counter");
 
 // 画像選択時にプレビュー表示
 // import Preview from './components/Preview.vue';
@@ -114,3 +132,18 @@ app.mount("#app");
 // createApp(Modal).mount('#cancel');
 // import DeleteModal from './components/DeleteModal.vue';
 // createApp(DeleteModal).component('delete-modal', DeleteModal);
+
+// タブ切り替え
+// const Tab = {
+//   data() {
+//     return {
+//       show: '1',
+//     }
+//   },
+//   methods: {
+//     select: function(num) {
+//       this.show = num;
+//     },
+//   }
+// }
+// createApp(Tab).mount('#tab');

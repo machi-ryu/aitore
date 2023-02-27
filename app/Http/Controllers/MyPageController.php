@@ -21,4 +21,19 @@ class MyPageController extends Controller
 
         return view('mypage.index', compact('posts'));
     }
+
+
+    /**
+     * 予定表へのデータ表示API
+     */
+    public function getEvents()
+    {
+        $my_posts = JisyutorePost::Join('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
+                    ->where('joins.user_id', Auth::id())
+                    ->where('joins.join_done_kubun', '1')
+                    ->get()->toArray();
+
+        return $my_posts;
+    }
+
 }
