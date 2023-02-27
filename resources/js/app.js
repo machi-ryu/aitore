@@ -48,6 +48,10 @@ app.component('date-time', Datetime);
 // import CalendarApp from './components/CalendarApp.vue';
 import CalendarApp from './components/CalendarApp3.vue';
 app.component('calendar-app', CalendarApp);
+import ShowModal from './components/ShowModal.vue';
+app.component('show-modal', ShowModal);
+import ShowModal2 from './components/ShowModal2.vue';
+app.component('show-modal2', ShowModal2);
 // app.config.compilerOptions.isCustomElement = tag => tag === 'v-calendar'
 // app.config.compilerOptions.isCustomElement = (tag) => {
 //   return tag.startsWith('v-calendar')

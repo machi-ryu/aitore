@@ -32,12 +32,7 @@
                 class="calendar-event"
                 :style="`width:97%;background-color:${dayEvent.color}`"
               >
-                <a :href="`/show/${dayEvent.jisyutore_post_id}`">
-                  <div class="hidden">
-                    {{ dayEvent.start_time }}
-                    {{ dayEvent.title }}
-                  </div>
-                </a>
+                  <show-modal2 :event="dayEvent"></show-modal2>
               </div>
             </div>
           </div>
@@ -213,7 +208,7 @@ export default {
   margin-bottom:1px;
   border-radius: 4px;
 }
-.calendar-event a{
+.calendar-event .text-center{
   color:white;
   /* margin-bottom:1px; */
   height:25px;
@@ -224,6 +219,10 @@ export default {
 .hidden {
   height: 25px;
   overflow: hidden;
+}
+.calendar-event .text-center:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 </style>
