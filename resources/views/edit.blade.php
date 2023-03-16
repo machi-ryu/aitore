@@ -44,9 +44,12 @@
                     selected_line="{{ $post->station->line_id }}"
                     selected_station="{{ $post->station_id }}"
                 ></select-staion>
-
-                <label class="form-label" for="date">場所</label>
-                <input class="form-control" type="text" name="address" value="{{ $post->address }}">
+            </div>
+            <div class="address">
+                <google-map
+                    address="{{ $post->address }}"
+                    style="height:100%; width:100%;"
+                ></google-map>
             </div>
             <div class="comment">
                 <label class="form-label" for="date">コメント</label>

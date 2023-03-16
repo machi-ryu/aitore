@@ -55,7 +55,12 @@
         <div class="address">
             <div class="border-bottom w-25">地図</div>
             <div class="map m-2">
-                地図
+                <!-- <div id="map"></div> -->
+                <!-- <google-map style="height:100%; width:100%"></google-map> -->
+                <google-map
+                    address="{{ $post->address }}"
+                    style="height:100%; width:100%"
+                ></google-map>
             </div>
         </div>
     </div>
@@ -75,7 +80,6 @@
     ></join-cancel-modal>
 
 </div>
-
 
 
 

@@ -52,6 +52,8 @@ import ShowModal from './components/ShowModal.vue';
 app.component('show-modal', ShowModal);
 import ShowModal2 from './components/ShowModal2.vue';
 app.component('show-modal2', ShowModal2);
+import GoogleMap from './components/GoogleMap.vue';
+app.component('google-map', GoogleMap);
 // app.config.compilerOptions.isCustomElement = tag => tag === 'v-calendar'
 // app.config.compilerOptions.isCustomElement = (tag) => {
 //   return tag.startsWith('v-calendar')
@@ -151,3 +153,26 @@ app.mount("#app");
 //   }
 // }
 // createApp(Tab).mount('#tab');
+
+// var MyLatLng = new google.maps.LatLng(35.6811673, 139.7670516);
+// var Options = {
+//  zoom: 15,      //地図の縮尺値
+//  center: MyLatLng,    //地図の中心座標
+//  mapTypeId: 'roadmap'   //地図の種類
+// };
+// var map = new google.maps.Map(document.getElementById('map'), Options);
+
+// Initialize and add the map
+// function initMap() {
+//   const uluru = {lat: 35.6811673, lng:139.7670516};
+//   const map = new google.maps.Map(document.getElementById("map"), {
+//     zoom: 15,      //地図の縮尺値
+//     center: uluru,    //地図の中心座標
+//     mapTypeId: 'roadmap'   //地図の種類
+//   });
+//   const marker = new google.maps.Marker({
+//     position: uluru,
+//     map: map,
+//   });
+// }
+// window.initMap = initMap();

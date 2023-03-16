@@ -43,6 +43,12 @@
                     selected_station="0"
                 ></select-staion>
             </div>
+            <div class="address">
+                <google-map
+                    address="神奈川県横浜市都筑区東山田町"
+                    style="height:100%; width:100%;"
+                ></google-map>
+            </div>
             <div class="comment">
                 <label class="form-label" for="date">コメント</label>
                 <!-- <input class="form-control" type="textarea" name="comment"> -->

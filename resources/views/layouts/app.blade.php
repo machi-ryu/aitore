@@ -16,6 +16,13 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyA4K2jcDjWhtghEupx_sJYOC7oK-fRt11c&language=ja"></script> -->
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4K2jcDjWhtghEupx_sJYOC7oK-fRt11c&callback=initMap&v=weekly"></script> -->
+<style>
+/* #map { height: 100%; width: 100%} */
+</style>
+
 </head>
 <body>
     <div id="app">

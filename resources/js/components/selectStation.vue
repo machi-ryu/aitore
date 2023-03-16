@@ -3,7 +3,8 @@
     <label class="form-label" for="date">場所</label>
     <!-- <input class="form-control" type="text" name="address"> -->
     <!-- <select v-on:change="selected" v-model="selectedId" class="form-control" name="address"> -->
-    <select v-on:change="selected" v-model="selected_line" class="form-control" name="address">
+    <!-- <select v-on:change="selected" v-model="selected_line" class="form-control" name="address"> -->
+    <select v-on:change="selected" v-model="selected_line" class="form-control" name="line_id">
             <option disabled value="0" selected>路線を選択してください</option>
             <option v-for="line in lines" :value="line.id" :key="line.id">{{ line.line_name }}</option>
     </select>
