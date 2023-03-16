@@ -1,5 +1,6 @@
 <template>
 <div>
+    <label class="form-label">写真</label>
     <input class="form-control" type="file" name="thumbnail" ref="preview" @change="show">
     <div class="preview-box" v-if="url">
         <img class="image-preview" v-bind:src="url">

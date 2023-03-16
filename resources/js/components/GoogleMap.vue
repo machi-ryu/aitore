@@ -10,7 +10,7 @@
     ></v-text-field> -->
     <input v-model="address" class="form-control" type="text" name="address">
 
-    <v-btn size="small" @click="mapDisplay">地図へ反映</v-btn>
+    <v-btn class="right" size="small" @click="mapDisplay">地図へ反映</v-btn>
     <!-- <button v-on:click="mapDisplay">地図へ反映</button> -->
   </div>
 </template>
@@ -109,3 +109,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.right {
+  float: right;
+}
+</style>

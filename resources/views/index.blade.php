@@ -2,7 +2,8 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-3"><h2>自主トレ一覧</h2></div>
+    <!-- <div class="col-md-3"><h4>自主トレ一覧</h4></div> -->
+    <div class="page-title col-md-3">自主トレ一覧</div>
     <div class="col-md-1">
         <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('create') }}">投稿</a>
     </div>
@@ -16,7 +17,8 @@
 
 @foreach($posts as $post)
     <div class="row mt-2">
-        <div class="card col-md-10 mx-auto">
+        <!-- <div class="card col-md-10 mx-auto"> -->
+        <div class="card">
             <div class="card-body row post-card">
                 <img class="col-md-2 index_image" src="{{ asset($post->thumbnail) }}">
                 <div class="col-md-6">

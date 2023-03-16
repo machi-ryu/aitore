@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-3"><h2>自主トレ詳細</h2></div>
+    <div class="page-title col-md-3">自主トレ詳細</div>
     @auth
         <div class="col-md-1">
             <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('edit', ['id' => $post->id]) }}">編集</a>
@@ -12,7 +12,8 @@
 </div>
 
 
-<div class="row row-top">
+<!-- <div class="row row-top"> -->
+<div class="row">
     {{-- 左部分 --}}
     <div class="column-left col-md-5">
         <div class="h3">{{ $post->title }}</div>

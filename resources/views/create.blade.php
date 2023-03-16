@@ -1,21 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>自主トレ投稿</h2>
-
-<!-- <div id="preview">
-    @{{ message }}
-                <input type="file" name="file" ref="preview" @change="show">
-                <div class="preview-box" v-if="url">
-                    <img class="image-preview" v-bind:src="url">
-                </div>
-</div> -->
+<div class="page-title">自主トレ投稿</div>
 
 <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
     @csrf
-    <div class="row row-top">
+    <!-- <div class="row row-top"> -->
+    <div class="row post-row">
         {{-- 左部分 --}}
         <div class="column-left col-md-5">
+        <!-- <div class="column-left"> -->
             <label class="form-label">タイトル</label>
             <input class="form-control" type="text" name="title">
             <div id="datetime"></div>
@@ -28,6 +22,7 @@
 
         {{-- 右部分 --}}
         <div class="column-right col-md-5">
+        <!-- <div class="column-right"> -->
             <div class="menu">
                 <label class="form-label" for="date">メニュー</label>
                 <!-- <input class="form-control" type="text" name="menu"> -->
@@ -43,21 +38,21 @@
                     selected_station="0"
                 ></select-staion>
             </div>
+            <div class="comment">
+                <label class="form-label">コメント</label>
+                <textarea class="form-control post-comment" name="comment"></textarea>
+            </div>
             <div class="address">
                 <google-map
                     address="神奈川県横浜市都筑区東山田町"
-                    style="height:100%; width:100%;"
+                    style="height:90%; width:100%;"
                 ></google-map>
-            </div>
-            <div class="comment">
-                <label class="form-label" for="date">コメント</label>
-                <!-- <input class="form-control" type="textarea" name="comment"> -->
-                <textarea class="form-control" name="comment"></textarea>
             </div>
         </div>
     </div>
-    <div class="d-grid gap-2 col-6 mx-auto page-bottom">
-        <button type="submit" class="btn btn-primary">投稿</button>
+    <!-- <div class="d-grid gap-2 col-6 mx-auto page-bottom"> -->
+    <div class="d-grid gap-2 post-btn">
+        <button type="submit" class="btn btn-primary btn-lg">投稿</button>
     </div>
 </form>
 

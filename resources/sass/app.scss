@@ -7,21 +7,29 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+// main
+main {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
+}
+.page-title {
+  font-size: 1.5em;
+  font-weight: 600;
+}
 
+// create
 .row-top {
     margin: 20px;
     height: 60vh;
 }
-
 .column-left, .column-right {
     margin-left: auto;
     margin-right: auto;
 }
-
 .comment{
     height: 20%;
 }
-
 .column-left {
     img {
         margin-top: 2px;
@@ -30,13 +38,21 @@
         object-fit: contain;
     }
 }
-
 img.image-preview {
     border: 2px solid gray;
 }
-
 #preview {
     margin-top: 10px;
+}
+.post-btn {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  width: 50%;
+}
+.post-comment {
+  line-height: 1.5em;
+  height: 5em;
 }
 
 /* モーダルウィンドウを開く要素 */

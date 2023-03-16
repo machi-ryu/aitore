@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label class="form-label" for="date">場所</label>
+    <label class="form-label" for="date">最寄駅</label>
     <!-- <input class="form-control" type="text" name="address"> -->
     <!-- <select v-on:change="selected" v-model="selectedId" class="form-control" name="address"> -->
     <!-- <select v-on:change="selected" v-model="selected_line" class="form-control" name="address"> -->
