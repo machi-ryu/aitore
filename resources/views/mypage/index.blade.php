@@ -32,19 +32,23 @@
                     <div class="card-body row post-card">
                         <img class="col-md-2 index_image" src="{{ asset($post->thumbnail) }}">
                         <div class="col-md-6">
-                            <div class="datetime">{{ $post->start_datetime }}〜{{ $post->end_datetime }}</div>
+                            <div class="datetime">
+                                {{ $post->startTimeFormat($post->start_datetime) }}
+                                〜
+                                {{ $post->endTimeFormat($post->end_datetime) }}
+                            </div>
                             <div><h4>{{ $post->title }}</h4></div>
                             <div class="menu_category">
                                 {{ Config::get('const.menu_category')[$post->menu_category] }}
                                  |
-                                {{ $post->address }}
+                                {{ $post->station->station_name }}
                             </div>
                         </div>
                         <div class="col-md-2">
                             <!-- <div>{{ $post->comment }}</div> -->
                             <div class="updated_at">
                                 <i class="bi bi-clock"></i>
-                                {{ $post->updated_at }}
+                                {{ $post->updatedatFormat($post->updated_at) }}
                             </div>
                             <div>参加人数</div>
                         </div>

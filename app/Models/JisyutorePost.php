@@ -77,11 +77,11 @@ class JisyutorePost extends Model
     /**
      * updated_atのフォーマット加工
      */
-    public function getUpdatedAtAttribute($value)
-    {
-        $updated_at = date('Y/n/j H:i', strtotime($value));
-        return $updated_at;
-    }
+    // public function getUpdatedAtAttribute($value)
+    // {
+    //     $updated_at = date('Y/n/j H:i', strtotime($value));
+    //     return $updated_at;
+    // }
 
 
     /**
@@ -176,5 +176,12 @@ class JisyutorePost extends Model
     {
         $datetime_format = date('H:i', strtotime($datetime));
         return $datetime_format;
+    }
+
+
+    public function updatedatFormat($datetime)
+    {
+        $updated_at = date('Y/n/j H:i', strtotime($datetime));
+        return $updated_at;
     }
 }

@@ -9,7 +9,6 @@
     <div class="row post-row">
         {{-- 左部分 --}}
         <div class="column-left col-md-5">
-        <!-- <div class="column-left"> -->
             <label class="form-label">タイトル</label>
             <input class="form-control" type="text" name="title">
             <div id="datetime"></div>
@@ -22,10 +21,8 @@
 
         {{-- 右部分 --}}
         <div class="column-right col-md-5">
-        <!-- <div class="column-right"> -->
             <div class="menu">
                 <label class="form-label" for="date">メニュー</label>
-                <!-- <input class="form-control" type="text" name="menu"> -->
                 <select class="form-control" name="menu_category">
                     @foreach (Config::get('const.menu_category') as $key => $value)
                         <option value="{{ $key }}">{{ $value }}</option>
