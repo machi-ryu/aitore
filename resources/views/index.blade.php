@@ -79,9 +79,6 @@
                                 <div class="position-absolute bottom-0 end-0 w-75">
                                     <!-- <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('show', ['id' => $post->id]) }}">詳細</a> -->
                                     <a class="btn btn-outline-primary w-100" href="{{ route('show', ['id' => $post->id]) }}">詳細</a>
-                                    <delete-modal
-                                    action="{{ route('destroy', ['id' => $post->id]) }}"
-                                    ></delete-modal>
                                 </div>
 
                             </div>
@@ -157,9 +154,6 @@
                                 <div class="position-absolute bottom-0 end-0 w-75">
                                     <!-- <a class="btn btn-outline-primary h-100 d-flex align-items-center" href="{{ route('show', ['id' => $post->id]) }}">詳細</a> -->
                                     <a class="btn btn-outline-primary w-100" href="{{ route('show', ['id' => $post->id]) }}">詳細</a>
-                                    <delete-modal
-                                    action="{{ route('destroy', ['id' => $post->id]) }}"
-                                    ></delete-modal>
                                 </div>
 
                             </div>
