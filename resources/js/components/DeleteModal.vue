@@ -2,7 +2,7 @@
   <div>
         <!-- <button v-show="{{ $is_join }}" v-on:click="open" class="btn btn-secondary">参加キャンセル</button> -->
         <a v-on:click="open"
-        class="btn btn-outline-secondary h-100 d-flex align-items-center"
+        class="btn btn-outline-secondary h-100 d-flex align-items-center justify-content-center"
         >削除</a>
 
         <!--  モーダルウィンドウ  -->

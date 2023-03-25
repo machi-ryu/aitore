@@ -99,14 +99,27 @@ img.image-preview {
 // indexページ
 .post-card {
     height: 150px;
+    // border: 1px solid #C0C0C0;
+    // margin-top: 10px;
 }
 .index_image {
     height: 100%;
     // width: 100%;
     object-fit: contain;
 }
-.datetime, .menu_category {
+.datetime {
     color: gray;
+    background-color: #F5F5F5;
+    border-radius: 5%;
+}
+.index-station {
+    color: gray;
+}
+.index-menu {
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 5%;
+    padding: 0 5px;
 }
 .updated_at {
     color: gray;
@@ -132,11 +145,12 @@ img.image-preview {
 .user_name {
     margin-top: -5px;
 }
-.right {
-    float: right;
+.index-join {
+  color: gray;
 }
-.clear {
-    clear: both;
+.index-title {
+  font-size: 1.5em;
+  line-height: 1.2;
 }
 
 // ユーザー情報編集画面
@@ -162,6 +176,7 @@ img.image-preview {
     display: flex;/* flexで横並び */
     border: 1px solid gray;
     cursor: pointer;/* カーソルポインターに */
+    padding-left: 0;
   }
   .tab {
     width: calc(100%/2);/* calc関数を使用し、均等に3分割する */
@@ -172,7 +187,7 @@ img.image-preview {
 //     border-left: 1px solid gray;
 //   }
   .tab.active {
-    background-color: #3399FF;
+    background-color: #0D6EFD;
     color: #fff;
   }
   .tab-area ul {
@@ -181,10 +196,19 @@ img.image-preview {
   .tab-area li {
       list-style: none;
   }
-  .panel {
+  .panel, .panel2 {
     display: none;
     // text-align: center;
   }
-  .panel.active {
+  .panel.active, .panel2.active {
     display: block;
   }
+.tab-area2 {
+  cursor: pointer;/* カーソルポインターに */
+}
+.tab2.active {
+  border-top: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-radius: 5%;
+}

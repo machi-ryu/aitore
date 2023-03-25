@@ -49,8 +49,8 @@
         <div class="station">
             <div class="border-bottom w-25">最寄駅</div>
             <div class="m-2">
-                <div>{{ $post->station->line->line_name }}</div>
-                <div>{{ $post->station->station_name }}</div>
+                {{ $post->station->station_name }} /
+                {{ $post->station->line->line_name }}
             </div>
         </div>
         <div class="address">

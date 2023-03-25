@@ -164,24 +164,39 @@ class JisyutorePost extends Model
      */
     public function startTimeFormat($datetime)
     {
-        $datetime_format = date('Y/m/d H:i', strtotime($datetime));
+        $datetime_format = date('Y/m/d G:i', strtotime($datetime));
         return $datetime_format;
     }
 
+    public function startTimeYear($datetime)
+    {
+        $datetime_format = date('Y', strtotime($datetime));
+        return $datetime_format;
+    }
+
+    public function startTimeMonthDay($datetime)
+    {
+        $datetime_format = date('n/j', strtotime($datetime));
+        return $datetime_format;
+    }
+
+    public function startTime($datetime)
+    {
+        $datetime_format = date('G:i', strtotime($datetime)); return $datetime_format; }
 
     /**
      * 日付フォーマット変換 end_datetime
      */
     public function endTimeFormat($datetime)
     {
-        $datetime_format = date('H:i', strtotime($datetime));
+        $datetime_format = date('G:i', strtotime($datetime));
         return $datetime_format;
     }
 
 
     public function updatedatFormat($datetime)
     {
-        $updated_at = date('Y/n/j H:i', strtotime($datetime));
+        $updated_at = date('Y/n/j G:i', strtotime($datetime));
         return $updated_at;
     }
 }

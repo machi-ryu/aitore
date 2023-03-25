@@ -14,6 +14,9 @@ class AitoreController extends Controller
 {
     public function index()
     {
+        $today = date('ymd');
+
+        // 予定
         $posts = JisyutorePost::withCount([
             'joins as level1_count' => function (Builder $query) {
                 $query->where('join_level', '1')->where('join_done_kubun', '1');
@@ -27,9 +30,29 @@ class AitoreController extends Controller
             'joins as total_count' => function (Builder $query) {
                 $query->where('join_done_kubun', '1');
             },
-            ])->get();
+            ])
+            ->where('start_datetime', '>=', $today)
+            ->orderBy('start_datetime')->get();
 
-        return view('index', compact('posts'));
+        // 履歴
+        $history_posts = JisyutorePost::withCount([
+            'joins as level1_count' => function (Builder $query) {
+                $query->where('join_level', '1')->where('join_done_kubun', '1');
+            },
+            'joins as level2_count' => function (Builder $query) {
+                $query->where('join_level', '2')->where('join_done_kubun', '1');
+            },
+            'joins as level3_count' => function (Builder $query) {
+                $query->where('join_level', '3')->where('join_done_kubun', '1');
+            },
+            'joins as total_count' => function (Builder $query) {
+                $query->where('join_done_kubun', '1');
+            },
+            ])
+            ->where('start_datetime', '<', $today)
+            ->orderBy('start_datetime', 'desc')->get();
+
+        return view('index', compact(['posts', 'history_posts']));
     }
 
 
