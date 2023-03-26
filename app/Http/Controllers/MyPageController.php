@@ -31,10 +31,19 @@ class MyPageController extends Controller
                 $query->where('join_done_kubun', '1');
             },
             ])
+            ->withExists([
+                'joins' => function (Builder $query) {
+                    $query->where('join_done_kubun', '1')
+                        ->where('user_id', Auth::id());
+                }
+            ])
             ->Join('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
-            ->where('joins.user_id', Auth::id())
-            ->where('joins.join_done_kubun', '1')
             ->where('start_datetime', '>=', $today)
+            ->where(function (Builder $query) {
+                $query->where('joins.user_id', Auth::id())
+                    ->where('joins.join_done_kubun', '1')
+                    ->orWhere('jisyutore_posts.user_id', Auth::id());
+            })
             ->orderBy('start_datetime')->get();
 
         // 履歴
@@ -52,10 +61,19 @@ class MyPageController extends Controller
                 $query->where('join_done_kubun', '1');
             },
             ])
+            ->withExists([
+                'joins' => function (Builder $query) {
+                    $query->where('join_done_kubun', '1')
+                        ->where('user_id', Auth::id());
+                }
+            ])
             ->Join('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
-            ->where('joins.user_id', Auth::id())
-            ->where('joins.join_done_kubun', '1')
             ->where('start_datetime', '<', $today)
+            ->where(function (Builder $query) {
+                $query->where('joins.user_id', Auth::id())
+                    ->where('joins.join_done_kubun', '1')
+                    ->orWhere('jisyutore_posts.user_id', Auth::id());
+            })
             ->orderBy('start_datetime', 'desc')->get();
 
         return view('mypage.index', compact(['posts', 'history_posts']));
@@ -70,6 +88,7 @@ class MyPageController extends Controller
         $my_posts = JisyutorePost::Join('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
                     ->where('joins.user_id', Auth::id())
                     ->where('joins.join_done_kubun', '1')
+                    ->orWhere('jisyutore_posts.user_id', Auth::id())
                     ->get()->toArray();
 
         return $my_posts;

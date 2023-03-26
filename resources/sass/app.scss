@@ -152,6 +152,28 @@ img.image-preview {
   font-size: 1.5em;
   line-height: 1.2;
 }
+.organizer {
+  position: relative;
+}
+.organizer::before {
+  content: "主催";
+  position: absolute;
+  color: red;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 0 25px;
+}
+.joiner {
+  position: relative;
+}
+.joiner::before {
+  content: "参加";
+  position: absolute;
+  color: orange;
+  border: 1px solid orange;
+  border-radius: 5px;
+  padding: 0 25px;
+}
 
 // ユーザー情報編集画面
 .preview_user_icon img {

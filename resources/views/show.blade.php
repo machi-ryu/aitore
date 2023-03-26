@@ -62,16 +62,18 @@
 
 <!-- 参加ボタン -->
 <div class="d-grid gap-2 col-6 mx-auto">
-    <join-modal
-    action="{{ route('join.store', ['id' => $post->id]) }}"
-    is_join="{{ $is_join }}"
-    ></join-modal>
+    @if ($post->user_id != Auth::user()->id)
+        <join-modal
+        action="{{ route('join.store', ['id' => $post->id]) }}"
+        is_join="{{ $is_join }}"
+        ></join-modal>
 
-    <!-- 参加キャンセル(参加してる場合にキャンセルボタンが表示される) -->
-    <join-cancel-modal
-    action="{{ route('join.cancel', ['id' => $post->id]) }}"
-    is_join="{{ $is_join }}"
-    ></join-cancel-modal>
+        <!-- 参加キャンセル(参加してる場合にキャンセルボタンが表示される) -->
+        <join-cancel-modal
+        action="{{ route('join.cancel', ['id' => $post->id]) }}"
+        is_join="{{ $is_join }}"
+        ></join-cancel-modal>
+    @endif
 
 </div>
 

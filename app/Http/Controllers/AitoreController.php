@@ -31,6 +31,12 @@ class AitoreController extends Controller
                 $query->where('join_done_kubun', '1');
             },
             ])
+            ->withExists([
+                'joins' => function (Builder $query) {
+                    $query->where('join_done_kubun', '1')
+                        ->where('user_id', Auth::id());
+                }
+            ])
             ->where('start_datetime', '>=', $today)
             ->orderBy('start_datetime')->get();
 
@@ -48,6 +54,12 @@ class AitoreController extends Controller
             'joins as total_count' => function (Builder $query) {
                 $query->where('join_done_kubun', '1');
             },
+            ])
+            ->withExists([
+                'joins' => function (Builder $query) {
+                    $query->where('join_done_kubun', '1')
+                        ->where('user_id', Auth::id());
+                }
             ])
             ->where('start_datetime', '<', $today)
             ->orderBy('start_datetime', 'desc')->get();

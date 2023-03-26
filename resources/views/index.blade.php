@@ -24,9 +24,30 @@
         <div class="row">
             <div class="col-xl-9">
                 @foreach($posts as $post)
-                    <div class="card mb-2">
+                    <!-- <div class="card mb-2 joiner"> -->
+                    <div
+                        @guest
+                            class="card mb-2"
+                        @else
+                            @if ($post->user_id == Auth::user()->id)
+                                class="card mb-2 organizer"
+                            @elseif ($post->joins_exists)
+                                class="card mb-2 joiner"
+                            @else
+                                class="card mb-2"
+                            @endif
+                        @endguest
+                    >
                         <div class="card-body row post-card">
                             <div class="col-1 my-2 datetime">
+                                <!-- @guest
+                                @else
+                                    @if ($post->user_id == Auth::user()->id)
+                                        主催
+                                    @elseif ($post->joins_exists)
+                                        参加
+                                    @endif
+                                @endguest -->
                                     <div class="text-center my-3 lh-1">
                                         <div>{{ $post->startTimeYear($post->start_datetime) }}</div>
                                         <div class="fs-4">{{ $post->startTimeMonthDay($post->start_datetime) }}</div>
@@ -99,7 +120,20 @@
         <div class="row">
             <div class="col-xl-9">
                 @foreach($history_posts as $post)
-                    <div class="card mb-2">
+                    <!-- <div class="card mb-2"> -->
+                    <div
+                        @guest
+                            class="card mb-2"
+                        @else
+                            @if ($post->user_id == Auth::user()->id)
+                                class="card mb-2 organizer"
+                            @elseif ($post->joins_exists)
+                                class="card mb-2 joiner"
+                            @else
+                                class="card mb-2"
+                            @endif
+                        @endguest
+                    >
                         <div class="card-body row post-card">
                             <div class="col-1 my-2 datetime">
                                     <div class="text-center my-3 lh-1">

@@ -33,7 +33,19 @@
                 <div class="row">
                     <div class="col-xl-9">
                         @foreach($posts as $post)
-                            <div class="card mb-2">
+                            <div
+                                @guest
+                                    class="card mb-2"
+                                @else
+                                    @if ($post->user_id == Auth::user()->id)
+                                        class="card mb-2 organizer"
+                                    @elseif ($post->joins_exists)
+                                        class="card mb-2 joiner"
+                                    @else
+                                        class="card mb-2"
+                                    @endif
+                                @endguest
+                            >
                                 <div class="card-body row post-card">
                                     <div class="col-1 my-2 datetime">
                                             <div class="text-center my-3 lh-1">
@@ -119,7 +131,19 @@
                 <div class="row">
                     <div class="col-xl-9">
                         @foreach($history_posts as $post)
-                            <div class="card mb-2">
+                            <div
+                                @guest
+                                    class="card mb-2"
+                                @else
+                                    @if ($post->user_id == Auth::user()->id)
+                                        class="card mb-2 organizer"
+                                    @elseif ($post->joins_exists)
+                                        class="card mb-2 joiner"
+                                    @else
+                                        class="card mb-2"
+                                    @endif
+                                @endguest
+                            >
                                 <div class="card-body row post-card">
                                     <div class="col-1 my-2 datetime">
                                             <div class="text-center my-3 lh-1">
