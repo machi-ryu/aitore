@@ -11,8 +11,12 @@
     </div>
     <div class="col-md-6">
         <ul class="tab-area">
-            <li class="tab active">一覧</li>
-            <li class="tab">カレンダー</li>
+            <li class="tab active">
+                <i class="bi bi-list-task me-1"></i>一覧
+            </li>
+            <li class="tab">
+                <i class="bi bi-calendar3 me-1"></i>カレンダー
+            </li>
         </ul>
     </div>
 </div>
@@ -60,18 +64,21 @@
                                     </div>
                                     <div class="col-7 my-2 position-relative">
                                         <div class="index-station">
+                                            <i class="bi bi-flag"></i>
                                             {{ $post->station->station_name }}
                                             /
                                             {{ $post->station->line->line_name }}
                                         </div>
                                         <div>
+                                            <i class="bi bi-tag"></i>
                                             <span class="index-menu">{{ Config::get('const.menu_category')[$post->menu_category] }}</span>
                                         </div>
                                         <div class="index-title">
                                             {{ $post->title }}
                                         </div>
                                         <div class="index-join position-absolute bottom-0 start-0 ms-3">
-                                            参加人数 {{ $post->total_count }}人
+                                            <i class="bi bi-people-fill"></i>
+                                            参加 {{ $post->total_count }}人
                                             (
                                             <i class="bi bi-emoji-laughing"></i>{{ $post->level1_count }}
                                             <i class="bi bi-emoji-smile"></i>{{ $post->level2_count }}
@@ -158,18 +165,21 @@
                                     </div>
                                     <div class="col-7 my-2 position-relative">
                                         <div class="index-station">
+                                            <i class="bi bi-flag"></i>
                                             {{ $post->station->station_name }}
                                             /
                                             {{ $post->station->line->line_name }}
                                         </div>
                                         <div>
+                                            <i class="bi bi-tag"></i>
                                             <span class="index-menu">{{ Config::get('const.menu_category')[$post->menu_category] }}</span>
                                         </div>
                                         <div class="index-title">
                                             {{ $post->title }}
                                         </div>
                                         <div class="index-join position-absolute bottom-0 start-0 ms-3">
-                                            参加人数 {{ $post->total_count }}人
+                                            <i class="bi bi-people-fill"></i>
+                                            参加 {{ $post->total_count }}人
                                             (
                                             <i class="bi bi-emoji-laughing"></i>{{ $post->level1_count }}
                                             <i class="bi bi-emoji-smile"></i>{{ $post->level2_count }}
