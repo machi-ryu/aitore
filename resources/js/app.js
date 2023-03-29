@@ -7,10 +7,10 @@
 import './bootstrap';
 // import { createApp, VueElement } from 'vue';
 import { createApp } from 'vue';
-import { createVuetify } from 'vuetify';
+// import { createVuetify } from 'vuetify';
 // import { createVCalendar } from 'v-calendar';
-import VCalendar from 'v-calendar';
-import 'v-calendar/dist/style.css';
+// import VCalendar from 'v-calendar';
+// import 'v-calendar/dist/style.css';
 // import Test from './components/TestComponent.vue';
 // import jQuery from 'jquery';
 // window.$ = jQuery;
@@ -22,14 +22,28 @@ import 'v-calendar/dist/style.css';
  */
 
 const app = createApp();
-const vuetify = createVuetify();
+// const vuetify = createVuetify();
 // const vcalendar = createVCalendar();
-app.use(vuetify)
+// app.use(vuetify)
 // app.use(vcalendar)
-app.use(VCalendar, {})
+// app.use(VCalendar, {})
 // console.log(app.version);
 // app.mount("#app");
 
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import Datepicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
+app.use(vuetify)
+app.component('Datepicker', Datepicker)
 
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
@@ -54,6 +68,8 @@ import ShowModal2 from './components/ShowModal2.vue';
 app.component('show-modal2', ShowModal2);
 import GoogleMap from './components/GoogleMap.vue';
 app.component('google-map', GoogleMap);
+import Search from './components/Search.vue';
+app.component('search-component', Search);
 // app.config.compilerOptions.isCustomElement = tag => tag === 'v-calendar'
 // app.config.compilerOptions.isCustomElement = (tag) => {
 //   return tag.startsWith('v-calendar')

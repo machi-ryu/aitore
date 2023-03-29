@@ -24,6 +24,19 @@
 <div class="panel-area">
     <!-- 一覧表示 -->
     <div class="panel active">
+
+        <!-- 検索 -->
+        <div class="row">
+            <div class=col-xl-9>
+                <search-component
+                    route-index="{{ route('mypage.index') }}"
+                    :stations="{{ json_encode($stations) }}"
+                    :menu-categorys="{{ json_encode(Config::get('const.menu_category')) }}"
+                ></search-component>
+            </div>
+        </div>
+
+        <!-- 切り替えタブ -->
         <div class="row">
             <ul class="nav tab-area2 justify-content-center">
                 <li class="tab2 px-5 pt-2 active">予定</li>

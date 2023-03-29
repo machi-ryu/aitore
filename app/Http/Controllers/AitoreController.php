@@ -12,59 +12,69 @@ use App\Models\Station;
 
 class AitoreController extends Controller
 {
-    public function index()
+    // public function index()
+    public function index(Request $request)
     {
         $today = date('ymd');
+        $menu_category = $request->input('menu_category');
+        $station_ids = $request->input('stations');
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $keyword = $request->input('keyword');
 
-        // 予定
-        $posts = JisyutorePost::withCount([
-            'joins as level1_count' => function (Builder $query) {
-                $query->where('join_level', '1')->where('join_done_kubun', '1');
-            },
-            'joins as level2_count' => function (Builder $query) {
-                $query->where('join_level', '2')->where('join_done_kubun', '1');
-            },
-            'joins as level3_count' => function (Builder $query) {
-                $query->where('join_level', '3')->where('join_done_kubun', '1');
-            },
-            'joins as total_count' => function (Builder $query) {
-                $query->where('join_done_kubun', '1');
-            },
-            ])
-            ->withExists([
-                'joins' => function (Builder $query) {
-                    $query->where('join_done_kubun', '1')
-                        ->where('user_id', Auth::id());
-                }
-            ])
-            ->where('start_datetime', '>=', $today)
-            ->orderBy('start_datetime')->get();
+        $jisyutore_post = new JisyutorePost();
+        $query_posts = $jisyutore_post->getIndex();
 
-        // 履歴
-        $history_posts = JisyutorePost::withCount([
-            'joins as level1_count' => function (Builder $query) {
-                $query->where('join_level', '1')->where('join_done_kubun', '1');
-            },
-            'joins as level2_count' => function (Builder $query) {
-                $query->where('join_level', '2')->where('join_done_kubun', '1');
-            },
-            'joins as level3_count' => function (Builder $query) {
-                $query->where('join_level', '3')->where('join_done_kubun', '1');
-            },
-            'joins as total_count' => function (Builder $query) {
-                $query->where('join_done_kubun', '1');
-            },
-            ])
-            ->withExists([
-                'joins' => function (Builder $query) {
-                    $query->where('join_done_kubun', '1')
-                        ->where('user_id', Auth::id());
-                }
-            ])
-            ->where('start_datetime', '<', $today)
-            ->orderBy('start_datetime', 'desc')->get();
+        // 予定データ取得
+        $query_posts->where('start_datetime', '>=', $today)
+            ->orderBy('start_datetime');
+        if (($menu_category != null) && ($menu_category != '00')) {
+           $query_posts->where('menu_category', $menu_category);
+        }
+        if ($station_ids) {
+            $query_posts->whereIn('station_id', $station_ids);
+        }
+        if ($start_date) {
+            $query_posts->where('start_datetime', '>=', $start_date);
+        }
+        if ($end_date) {
+            $query_posts->where('start_datetime', '<=', $end_date);
+        }
+        if ($keyword) {
+            $query_posts->where(function (Builder $query) use ($keyword) {
+                $query->orWhere('title', 'like', '%' . $keyword . '%')
+                    ->orWhere('station_name', 'like', '%' . $keyword . '%')
+                    ->orWhere('users.name', 'like', '%' . $keyword . '%');
+            });
+        }
+        $posts = $query_posts->get();
 
-        return view('index', compact(['posts', 'history_posts']));
+        // 履歴データ取得
+        $query_history = $jisyutore_post->getIndex();
+        $query_history->where('start_datetime', '<', $today)
+            ->orderBy('start_datetime', 'desc');
+        if (($menu_category != null) && ($menu_category != '00')) {
+           $query_history->where('menu_category', $menu_category);
+        }
+        if ($station_ids) {
+            $query_history->whereIn('station_id', $station_ids);
+        }
+        if ($end_date) {
+            $query_history->where('start_datetime', '<=', $end_date);
+        }
+        if ($keyword) {
+            $query_history->where(function (Builder $query) use ($keyword) {
+                $query->orWhere('title', 'like', '%' . $keyword . '%')
+                    ->orWhere('station_name', 'like', '%' . $keyword . '%')
+                    ->orWhere('users.name', 'like', '%' . $keyword . '%');
+            });
+        }
+        $history_posts = $query_history->get();
+
+        // station取得
+        $stations = Station::all();
+
+        return view('index', compact(['posts', 'history_posts', 'stations']));
     }
 
 

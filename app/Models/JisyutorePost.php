@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Join;
 
 class JisyutorePost extends Model
@@ -199,4 +201,40 @@ class JisyutorePost extends Model
         $updated_at = date('Y/n/j G:i', strtotime($datetime));
         return $updated_at;
     }
+
+
+    /**
+     * getIndex
+     */
+    public function getIndex()
+    {
+        $query = $this::query();
+        // $posts = $this::withCount([
+        $query->withCount([
+            'joins as level1_count' => function (Builder $query) {
+                $query->where('join_level', '1')->where('join_done_kubun', '1');
+            },
+            'joins as level2_count' => function (Builder $query) {
+                $query->where('join_level', '2')->where('join_done_kubun', '1');
+            },
+            'joins as level3_count' => function (Builder $query) {
+                $query->where('join_level', '3')->where('join_done_kubun', '1');
+            },
+            'joins as total_count' => function (Builder $query) {
+                $query->where('join_done_kubun', '1');
+            },
+            ])
+            ->withExists([
+                'joins' => function (Builder $query) {
+                    $query->where('join_done_kubun', '1')
+                        ->where('user_id', Auth::id());
+                }
+            ])
+            ->Join('stations', 'jisyutore_posts.station_id', '=', 'stations.id')
+            ->Join('users', 'jisyutore_posts.user_id', '=', 'users.id')
+            ->get();
+
+            return $query;
+    }
+
 }
