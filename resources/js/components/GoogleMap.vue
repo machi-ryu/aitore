@@ -23,6 +23,7 @@ export default {
       // uluru: {lat: 35.6811673, lng:139.7670516},
       uluru: {lat: 35.5571547, lng:139.6082375},
       // address: '神奈川県横浜市都筑区東山田町',
+      address: this.address,
       position: {'lat': 0, 'lng': 0},
       test: '',
       map: Object,
@@ -64,7 +65,7 @@ export default {
                 lng: e.latLng.lng(),
               }
               // console.log(this.position);
-              var map = new window.google.maps.Map(document.getElementById('map2'), {
+              var map = new window.google.maps.Map(document.getElementById('map'), {
                 zoom: 15,      //地図の縮尺値
                 // center: latlng,    //地図の中心座標
                 center: this.position,    //地図の中心座標

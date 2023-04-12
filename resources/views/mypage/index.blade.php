@@ -127,7 +127,7 @@
                                                         編集
                                                     </a>
                                                     <delete-modal
-                                                    action="{{ route('destroy', ['id' => $post->id]) }}"
+                                                        action="{{ route('destroy', ['id' => $post->id]) }}"
                                                     ></delete-modal>
                                                 @endif
                                             </div>

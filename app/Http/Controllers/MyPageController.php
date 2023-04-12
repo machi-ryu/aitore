@@ -26,7 +26,7 @@ class MyPageController extends Controller
         $query_posts = $jisyutore_post->getIndex();
 
         // 予定データ取得
-        $query_posts->Join('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
+        $query_posts->leftJoin('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
         ->where('start_datetime', '>=', $today)
         ->where(function (Builder $query) {
             $query->where('joins.user_id', Auth::id())
@@ -57,7 +57,7 @@ class MyPageController extends Controller
 
         // 履歴データ取得
         $query_history = $jisyutore_post->getIndex();
-        $query_history->Join('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
+        $query_history->leftJoin('joins', 'jisyutore_posts.id', '=', 'joins.jisyutore_post_id')
         ->where('start_datetime', '<', $today)
         ->where(function (Builder $query) {
             $query->where('joins.user_id', Auth::id())

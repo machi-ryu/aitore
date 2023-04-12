@@ -5,7 +5,8 @@
         <input type="hidden" name="_token" :value="csrf">
 
         <div class="col-sm-3">
-            <select class="form-select" name="stations[]" placeholder="駅" size="3" multiple>
+            <select class="form-select" name="stations[]" placeholder="駅" size="3" :value="searchStations" multiple>
+                <option disabled value="0" selected>駅を選択(複数可)</option>
                 <option v-for="station in stations" :value="station.id" :key="station.id">{{ station.station_name }}</option>
             </select>
             <!-- <v-select
@@ -37,13 +38,13 @@
                     />
                 </div>
                 <div class="col-sm-3">
-                    <select class="form-control" name="menu_category" placeholder="メニュー">
+                    <select class="form-control" name="menu_category" placeholder="メニュー" :value="menuCategory">
                         <option disabled value="0" selected>メニュー</option>
                         <option v-for="(item, key) in menuCategorys" :value="key" :key="key">{{ item }}</option>
                     </select>
                 </div>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="keyword" placeholder="キーワード (タイトル、駅、投稿者)">
+                    <input type="text" class="form-control" name="keyword" placeholder="キーワード (タイトル、駅、投稿者)" :value="keyword">
                 </div>
             </div>
         </div>
@@ -58,18 +59,17 @@
 
 <script>
 import { ref } from 'vue';
-import moment from "moment"
 export default {
-    props: ['routeIndex', 'stations', 'menuCategorys'],
+    props: ['startDate', 'endDate', 'routeIndex', 'stations', 'menuCategorys', 'menuCategory', 'keyword', 'searchStations'],
     data() {
         return {
-            startDate: '',
-            endDate: '',
+            // startDate: '2023-04-01',
+            // endDate: '',
         }
     },
     mounted() {
-        this.startDate = ref();
-        this.endDate = ref();
+        // this.startDate = ref();
+        // this.endDate = ref();
     },
 }
 </script>

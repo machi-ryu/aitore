@@ -37,10 +37,14 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({
   components,
   directives,
+  icons: {
+    defaultSet: 'mdi',
+  },
 })
 app.use(vuetify)
 app.component('Datepicker', Datepicker)
@@ -62,8 +66,6 @@ app.component('date-time', Datetime);
 // import CalendarApp from './components/CalendarApp.vue';
 import CalendarApp from './components/CalendarApp3.vue';
 app.component('calendar-app', CalendarApp);
-import ShowModal from './components/ShowModal.vue';
-app.component('show-modal', ShowModal);
 import ShowModal2 from './components/ShowModal2.vue';
 app.component('show-modal2', ShowModal2);
 import GoogleMap from './components/GoogleMap.vue';

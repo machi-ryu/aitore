@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostFormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\JisyutorePost;
@@ -74,7 +75,7 @@ class AitoreController extends Controller
         // station取得
         $stations = Station::all();
 
-        return view('index', compact(['posts', 'history_posts', 'stations']));
+        return view('index', compact(['posts', 'history_posts', 'stations', 'start_date', 'end_date', 'station_ids', 'menu_category', 'keyword']));
     }
 
 
@@ -120,7 +121,8 @@ class AitoreController extends Controller
      * @param Request $request
      * @return void
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(PostFormRequest $request)
     {
         $post = new JisyutorePost;
         $data = $request->all();

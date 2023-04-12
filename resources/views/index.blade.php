@@ -18,38 +18,14 @@
             route-index="{{ route('index') }}"
             :stations="{{ json_encode($stations) }}"
             :menu-categorys="{{ json_encode(Config::get('const.menu_category')) }}"
+            start-date="@if(isset($start_date)){{ $start_date }}@endif"
+            end-date="@if(isset($end_date)){{ $end_date }}@endif"
+            search-stations="@if(isset($station_ids)){{ json_encode($station_ids) }}@endif"
+            menu-category="@if(isset($menu_category)){{ $menu_category }}@else{{ 0 }}@endif"
+            keyword="@if(isset($keyword)){{ $keyword }}@endif"
         ></search-component>
     </div>
 </div>
-<!-- <form class="row mt-1" method="GET" action="{{ route('index') }}">
-@csrf
-    <div class="col-sm-auto">
-        <select class="form-select" name="station[]" placeholder="駅" multiple>
-            @foreach ($stations as $station)
-                <option value="{{ $station->id }}">{{ $station->station_name }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col-sm-auto">
-        <select class="form-control" name="menu_category" value="{{ old('menu_category') }}" placeholder="メニュー">
-            @foreach (Config::get('const.menu_category') as $key => $value)
-                <option value="{{ $key }}">{{ $value }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="col-sm-auto">
-        <input type="text" class="form-control" name="" placeholder="時間">
-    </div>
-    <div class="col-sm-auto">
-        <input type="text" class="form-control" name="" placeholder="タイトル">
-    </div>
-    <div class="col-sm-auto">
-        <button type="submit" class="btn btn-primary">検索</button>
-    </div>
-    <div class="col-sm-auto">
-        <a class="btn btn-outline-secondary" href="{{ route('index') }}">リセット</a>
-    </div>
-</form> -->
 
 <div class="row">
     <ul class="nav tab-area2 justify-content-center">

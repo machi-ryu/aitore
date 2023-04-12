@@ -14,15 +14,15 @@
 <script>
     export default {
         name: 'Preview',
-        props: ['image_path'],
+        props: ['image_path', 'previewPath'],
         data() {
             return {
                 url:""
             };
         },
-        // mounted(){
-        //     console.log(this.$refs.preview)
-        // },
+        mounted(){
+            console.log(this.$refs.preview)
+        },
         methods:{
             show(){
                 const file = this.$refs.preview.files[0];
